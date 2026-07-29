@@ -7,7 +7,7 @@ import { LabRequest, Service, Store, User } from "@/lib/types";
 type Context={store:Store;ready:boolean;user:User|null;login:(email:string,password?:string)=>boolean;logout:()=>void;submit:(r:Omit<LabRequest,"id"|"number"|"customerId"|"submittedAt"|"resultReadyAt">)=>LabRequest;update:(fn:(s:Store)=>Store)=>void;reset:()=>void};
 const C=createContext<Context|null>(null);
 export function CloudLabProvider({children}:{children:React.ReactNode}){
- const [store,setStoreState]=useState<Store>(()=>({schemaVersion:1,users:[],equipment:[],services:[],requests:[],results:[]}));const [sessionId,setSessionId]=useState<string|null>(null);const [ready,setReady]=useState(false);
+ const [store,setStoreState]=useState<Store>(()=>({schemaVersion:2,users:[],equipment:[],services:[],requests:[],results:[]}));const [sessionId,setSessionId]=useState<string|null>(null);const [ready,setReady]=useState(false);
  useEffect(()=>{setStoreState(loadStore());setSessionId(getSession());setReady(true);const sync=(e:StorageEvent)=>{if(e.key===STORE_KEY)setStoreState(loadStore());};window.addEventListener("storage",sync);return()=>window.removeEventListener("storage",sync);},[]);
  const update=useCallback((fn:(s:Store)=>Store)=>{setStoreState(prev=>{const next=fn(prev);saveStore(next);return next;});},[]);
  const user=store.users.find(u=>u.id===sessionId)||null;

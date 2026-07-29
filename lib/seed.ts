@@ -1,9 +1,9 @@
 import { Equipment, Result, Service, Store, User } from "./types";
 
 export const users: User[] = [
-  {id:"u-customer",name:"Maya Chen",email:"customer@cloudlab.demo",password:"demo123",role:"customer",company:"Aperture Materials"},
-  {id:"u-employee",name:"Jordan Lee",email:"employee@cloudlab.demo",password:"demo123",role:"employee"},
-  {id:"u-admin",name:"Alex Morgan",email:"admin@cloudlab.demo",password:"demo123",role:"administrator"}
+  {id:"u-customer",name:"Mainak Mondal",email:"customer@cloudlab.demo",password:"demo123",role:"customer",company:"CloudLab Customer"},
+  {id:"u-employee",name:"Jacob Konnick",email:"employee@cloudlab.demo",password:"demo123",role:"employee"},
+  {id:"u-admin",name:"Kelly Xiao",email:"admin@cloudlab.demo",password:"demo123",role:"administrator"}
 ];
 export const equipment: Equipment[] = [
   ["afm","Dimension Icon AFM","AFM","Atomic Force Microscopy",68,32,"Online"], ["xrr","SmartLab XRR","XRR","X-Ray Reflectometry",75,25,"Online"],
@@ -26,7 +26,7 @@ const raw: Omit<Service,"id"|"published"|"parameters">[] = [
   {title:"Coefficient of Friction Test",technique:"Tribology",equipmentId:"trib",description:"Dynamic friction, wear depth and rate under controlled load.",price:2250,turnaround:6}
 ];
 export const services:Service[]=raw.map((s,i)=>({...s,id:`svc-${i+1}`,published:true,parameters:["Measurement area","Scan resolution","Environmental condition"]}));
-export const seedStore=():Store=>({schemaVersion:1,users,equipment,services,requests:[],results:[]});
+export const seedStore=():Store=>({schemaVersion:2,users,equipment,services,requests:[],results:[]});
 export function generateResult(requestId:string, technique:string):Result {
   const points=Array.from({length:36},(_,i)=>({x:i,y:Number((45+Math.sin(i/3)*18+Math.random()*8).toFixed(2)),y2:Number((35+Math.cos(i/4)*12).toFixed(2))}));
   const t=technique.toLowerCase(); let metrics:Record<string,string|number>; let interpretation:string;

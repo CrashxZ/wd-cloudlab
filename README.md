@@ -8,11 +8,11 @@ The application uses Next.js App Router, TypeScript, Tailwind CSS, Recharts, Luc
 
 ## Demo accounts
 
-| Role | Email | Password |
-|---|---|---|
-| Customer | `customer@cloudlab.demo` | `demo123` |
-| Employee | `employee@cloudlab.demo` | `demo123` |
-| Administrator | `admin@cloudlab.demo` | `demo123` |
+| Role | Name | Email | Password |
+|---|---|---|---|
+| Customer | Mainak Mondal | `customer@cloudlab.demo` | `demo123` |
+| Employee | Jacob Konnick | `employee@cloudlab.demo` | `demo123` |
+| Administrator | Kelly Xiao | `admin@cloudlab.demo` | `demo123` |
 
 The sign-in screen also provides one-click access for every role.
 
