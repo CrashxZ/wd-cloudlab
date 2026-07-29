@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { generateResult } from "@/lib/seed";
 import { getSession, loadStore, saveStore, seedAndSave, setSession, STORE_KEY } from "@/lib/storage";
 import { LabRequest, Service, Store, User } from "@/lib/types";
@@ -15,7 +15,7 @@ export function CloudLabProvider({children}:{children:React.ReactNode}){
  const logout=()=>{setSession(null);setSessionId(null);};
  const submit=(input:Omit<LabRequest,"id"|"number"|"customerId"|"submittedAt"|"resultReadyAt">)=>{const submittedAt=Date.now();const id=`req-${submittedAt}`;const r:LabRequest={...input,id,number:`WDCL-${new Date().getFullYear()}-${String(store.requests.length+1).padStart(4,"0")}`,customerId:user?.id||"u-customer",submittedAt,resultReadyAt:submittedAt+60000};const service=store.services.find(s=>s.id===r.serviceId) as Service;update(s=>({...s,requests:[r,...s.requests],results:[generateResult(id,service?.technique||"Generic"),...s.results]}));return r;};
  const reset=()=>{const s=seedAndSave();setStoreState(s);};
- const value=useMemo(()=>({store,ready,user,login,logout,submit,update,reset}),[store,ready,user,update]);
+ const value={store,ready,user,login,logout,submit,update,reset};
  return <C.Provider value={value}>{children}</C.Provider>;
 }
 export function useCloudLab(){const c=useContext(C);if(!c)throw new Error("CloudLab context missing");return c;}
