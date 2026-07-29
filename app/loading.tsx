@@ -1,0 +1,1 @@
+export default function Loading(){return <div className="container page"><div className="card animate-pulse p-8"><div className="h-7 w-48 rounded bg-neutral-200"/><div className="mt-5 h-36 rounded bg-neutral-100"/></div></div>}
