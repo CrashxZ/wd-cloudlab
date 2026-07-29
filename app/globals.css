@@ -17,6 +17,7 @@ button { cursor:pointer; }
 .btn-primary { background:var(--blue); color:white; border-color:var(--blue); box-shadow:0 8px 22px rgba(0,103,177,.22); }
 .btn-dark { background:#1d1d1d; color:#fff; border-color:#1d1d1d; }
 .input { width:100%; border:1px solid #d9d9d5; background:#fff; border-radius:12px; padding:11px 13px; outline:none; }
+.input.pl-10 { padding-left:2.75rem; }
 .input:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(0,103,177,.11); }
 .label { display:block; font-size:13px; font-weight:750; margin-bottom:7px; }
 .badge { display:inline-flex; align-items:center; gap:6px; padding:5px 9px; border-radius:999px; background:#f0f0ee; font-size:11px; font-weight:800; }
